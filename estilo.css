@@ -2,7 +2,7 @@
 	font-size: 20px;
 	background-color: #18386B;
 	height: 120px;
-	box-shadow: -719px 3px 10px 0 black,718px 3px 10px 0 black;
+	box-shadow: 0px 3px 10px 0 black;
 }
 
 .dom-nav__h1{
@@ -50,18 +50,31 @@
 	padding: 10px
 }
 .container-menu__informacion-p{
-	color: blue;
+	color: #18386B;
 }
 .container-menu__informacion-titulo{
     font-size: 2em;
-  	color: blue;
+  	color: #18386B;
     text-align: center;
 }
 .pie{
-	height: 150px;
-	color:white;
-	background-color: #005cb2;
-	display: block;
+	height: 130px;
+	background-color: #20203B;
+	border-radius: 5px;
+	display: flex;
+  	align-items: flex-start;
 	box-shadow: 0px -2px 5px 0 black;
-	margin-top: 3px;
+	margin-top: 10px;
+	padding: 30px;
+}
+.pie-pagina__p{
+	color: white;
+	font: normal normal normal 10px/26px Open Sans;
+	font-size: 0.7rem;
+	text-align: left;
+	padding: 20px;
+	margin-left: 70px;
+}
+.pie-pagina__facebook{
+	color: white;
 }
