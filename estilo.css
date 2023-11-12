@@ -1,6 +1,10 @@
+:root{
+	--color_Unach : #18386B;
+}
+
 .dom-nav{
 	font-size: 20px;
-	background-color: #18386B;
+	background-color: var(--color_Unach);
 	height: 120px;
 	box-shadow: 0px 3px 10px 0 black;
 }
@@ -50,11 +54,11 @@
 	padding: 10px
 }
 .container-menu__informacion-p{
-	color: #18386B;
+	color: var(--color_Unach);
 }
 .container-menu__informacion-titulo{
     font-size: 2em;
-  	color: #18386B;
+  	color: var(--color_Unach);
     text-align: center;
 }
 .pie{
