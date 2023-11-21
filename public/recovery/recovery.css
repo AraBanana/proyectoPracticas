@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('imagenes/quiero-un-fondo-para-mi-pagina-web-que-se-vea-sens-upscaled.png');
+}
+
+.input-container {
+    
+    position: relative;
+    display: block;
+    align-items: center;
+}
+
+.email_input {
+    padding-left: 30px; /* Espacio para el ancho del icono */
+}
+
+/* Estilos para el icono */
+.input-container svg {
+    position: absolute;
+    transform: translateY(42%);
+    left: 10px; /* Ajusta según sea necesario */
+    fill: black; /* Cambia el color según sea necesario */
+}
+
+
+.email_input{
+    color: #ccc;
+    justify-content: center;
+    text-align: left;
+}
+
+.form-container {
+    max-width: 900px;
+    background: linear-gradient(
+    50deg,
+    rgba(255, 255, 255, 0.4) 12%,
+    rgba(255, 255, 255, 0.1) 77%
+  );
+  background-blend-mode: screen;
+  box-shadow: 0px 4px 24px 1px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+    padding: 72px 44px;
+    font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    color: #212121;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+}
+
+  .form-container button:active {
+    scale: 0.95;
+  }
+  
+  .form-container .logo-container {
+    margin: 0;
+    padding-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  .form-container .form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.form-container .form-group {
+    color: gray;
+    display: flex;
+    margin-right: 80px;
+    font-size: medium;
+    flex-direction: column;
+    gap: 2px;
+    align-items:first baseline;
+}
+
+  .form-container .form-group label {
+    color: black;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-container .form-group input {
+    font-size: 14px;
+    margin: 0;
+    width: 100%; /* ajusta según sea necesario */
+    padding: 15px;
+    border-radius: 6px;
+    padding: 10px 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid white;
+    background: local;
+}
+
+  
+  .form-container .form-group input::placeholder {
+    opacity: 0.5;
+    color: rgb(213, 213, 213);
+  }
+  
+  .form-container .form-group input:focus {
+    outline: none;
+    border-color: #1778f2;
+    color: black;
+  }
+  
+  .form-container .form-submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
+    background-color: #212121;
+    border: none;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    gap: 8px;
+    margin: 22px 0;
+    margin-top: 40px;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+  }
+  .volver {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .form-container .form-submit-btn:hover {
+    background-color: #313131;
+  }
+  
+  .form-container .link {
+    color: #1778f2;
+    text-decoration: none;
+  }
+
+  .form-container .link:hover {
+    text-decoration: underline;
+  }
+  
+  

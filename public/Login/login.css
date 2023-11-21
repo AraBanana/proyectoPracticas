@@ -6,6 +6,12 @@ body {
     margin: 0; /* Asegura que no haya márgenes en el cuerpo */
     background-image: url('imagenes/quiero-un-fondo-para-mi-pagina-web-que-se-vea-sens-upscaled.png');
 }
+.titulo{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+}
 .form {
     font-size: 20px;
     display: flex;
@@ -36,11 +42,12 @@ body {
   }
   
   .flex-column > label {
-    color: #151717;
+    color: black;
     font-weight: 600;
   }
   
   .inputForm {
+    color:black;
     border: 1.5px solid #ecedec;
     border-radius: 10px;
     height: 50px;
@@ -52,7 +59,7 @@ body {
   
   .input {
     font-size: 14px;
-    color: #151717;
+    color:black;
     margin-left: 10px;
     border-radius: 10px;
     border: none;
@@ -60,12 +67,24 @@ body {
     height: 100%;
     background: local;
   }
+  .error{
+    color: red;
+    font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+  }
+  .escondido{
+    display: none;
+  }
   
   .input:focus {
+    color:black;
     outline: none;
   }
   
   .inputForm:focus-within {
+    color:black;
     border: 1.5px solid #2d79f3;
   }
   
