@@ -1,0 +1,134 @@
+:root{
+	--color_Unach : #18386B;
+	--colot_darkUnach : #20203B;
+}
+/* Estilo para el elemento select */
+label select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    appearance: none; /* Oculta las flechas predeterminadas del select en algunos navegadores */
+    color: black; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    outline: none; /* Quita el contorno predeterminado */
+    cursor: pointer; /* Cursor de apuntar */
+}
+
+/* Estilo para las opciones del select */
+label select option {
+    background-color: #20203B; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: 1px solid #ddd;
+}
+
+/* Estilo cuando el select está enfocado o activo */
+label select:focus {
+    border: 2px solid #18386B; /* Cambia el borde al enfocarse */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra ligera al enfocarse */
+}
+
+.form {
+    /* Otros estilos... */
+    max-width: none; /* O ajusta según sea necesario */
+    margin: 0; /* O ajusta según sea necesario */
+    align-items: center;
+    
+}
+
+.titulo_form{
+    margin-top: -120px;
+    margin-bottom: 100px;
+    margin-left: -100px;
+    padding-bottom: 5px;
+    color: var(--color_Unach);
+    border-bottom: 1px solid var(--color_Unach);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    display: block; /* Asegura que sea un bloque y ocupe toda la línea */
+    padding-left: 120px;
+    padding-right: 120px;
+
+  }
+
+.container-menu__informacion{
+    margin-left: 17%;
+    margin-top: 160px;
+    font-size: 20px;
+}
+.flex {
+ 
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.input, .input01 {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+.fancy {
+    margin-top: 60px;
+    margin-left: 100px;
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: var(--color_Unach);
+    text-transform: uppercase;
+    position: relative;
+    transition: .5s ease;
+    cursor: pointer;
+    border: 1px solid var(--color_Unach);
+  }
+  
+  .fancy::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color_Unach);
+    transition: .5s ease;
+    cursor: pointer;
+  }
+  
+  .fancy:hover {
+    color: white;
+    transition-delay: .5s;
+    cursor: pointer;
+  }
+  
+  .fancy:hover::before {
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .fancy::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: var(--color_Unach);
+    transition: .4s ease;
+    z-index: -1;
+    cursor: pointer;
+  }
+  
+  .fancy:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+    cursor: pointer;
+  }

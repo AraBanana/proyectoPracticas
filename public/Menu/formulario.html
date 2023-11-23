@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link rel="stylesheet" type="text/css" href="domNor.css">
+    <link rel="stylesheet" type="text/css" href="formulario.css">
+	<link rel="icon" href="ico.png" type="image/png">
+	<title>PracticasProfesionales</title>
+</head>
+<body>
+	<form class="form" action="/menu" method="post">
+	<header class="dom">
+		<div class="dom-nav">
+			<h1 class="dom-nav__h1">DOMA´S</h1>
+			<p class="dom-nav__p">Sistema de practicas profesionales</p>
+		</div>
+	</header>
+	<div class="container">
+	<div class="container-panel">
+		<div class="profile-container">
+			<div class="profile-picture">
+				<img src="default-avatar.jpg" alt="Profile Picture" id="profile-image">
+				<input type="file" id="file-input" accept="image/*" onchange="previewImage()">
+			</div>
+		</div>
+
+		<button type="button" class="formulario_button" onclick="redirectToFormulario()">
+			Formulario
+		</button>
+        <button  type="button"  class="documentacion_button" onclick="redirectToDocumentacion()">
+            Documentación
+       </button>
+       
+		<button class="displacement_button">
+			Informacion
+		</button>
+
+		<button class="acercade_button">
+			Acerda de
+		</button>
+
+    </form>
+
+	</div>
+
+	<div class="container-menu">
+		
+		<div class="container-menu__informacion">
+                <form class="container_menu_form" action="/api/alumnos/add" method="post">
+                  
+                    <label class="titulo_form" ><h3>Formulario para documentacion de Practicas profesionales</h3></label>
+                    <label>
+                        <select name="tipo_carta">
+                            <option value="carta_presentacion">Carta Presentación</option>
+                            <option value="carta_aceptacion">Carta Aceptación</option>
+                            <option value="carta_finalizacion">Carta Finalización</option>
+                        </select>
+                        <span>Selecciona el tipo de Carta</span>
+                    </label>
+                    
+                    <div class="flex">
+                        <label>
+                            <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre/s" required="">
+                            <span>Nombre</span>
+                        </label>
+                
+                        <label>
+                            <input class="input" type="text" name="apellidos" placeholder="Ingresa tus apellidos" required="">
+                            <span>Apellidos</span>
+                        </label>
+                    </div>  
+                
+                    <label>
+                        <input class="input" type="text" name="matricula" placeholder="Ingresa tu Matricula" required="">
+                        <span>Matricula</span>
+                    </label> 
+                        
+                    <label>
+                        <input class="input" type="text" name="empresa" placeholder="Ingresa el nombre de la empresa que tienes asignada" required="">
+                        <span>Empresa asignada</span>
+                    </label>
+                
+                    <div class="flex">
+                        <label>
+                            <input class="input" type="text" name="grado" placeholder="Ingresa tu grado" required="">
+                            <span>Grado</span>
+                        </label>
+                
+                        <label>
+                            <input class="input" type="text" name="grupo" placeholder="Ingresa tu grupo" required="">
+                            <span>Grupo</span>
+                        </label>
+                    </div>
+                
+                    <button type="submit" class="fancy">
+                        Aceptar
+                    </button>
+                    <button type="submit" class="fancy">
+                        Volver a descargar
+                    </button>
+                </form>
+                
+			
+		</div>
+	</div>
+</div class="container">
+	<div class="pie">
+		<div class="pie-pagina">
+		<h5 class="pie-pagina__p">UNIVERSIDAD AUTONOMA DE CHIAPAS  2023© UNACH  |  Facultad de Negocios Campus IV  |  Carretera a Puerto Madero Km. 1.5, Col. San Sebastián, Tapachula, Chiapas  |  </h5>
+		<a class="pie-pagina__facebook" href="https://www.facebook.com/profile.php?id=100057134842799"></a>
+	</div>
+</div>
+</form>
+<script src="/menu/menu.js"></script>
+</body>
+</html>

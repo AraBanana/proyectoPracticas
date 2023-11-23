@@ -25,7 +25,20 @@ body {
     left: 10px; /* Ajusta según sea necesario */
     fill: black; /* Cambia el color según sea necesario */
 }
-
+#successLabel{
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin: 5px 0;
+  margin: 0;
+}
+#errorLabel{
+  text-align: center;
+  color: red;
+  font-size: 14px;
+  margin: 5px 0;
+  margin: 0;
+}
 
 .email_input{
     color: #ccc;

@@ -1,6 +1,9 @@
 const express = require('express');
 const { Pool } = require('pg');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const { PDFDocument } = require('pdf-lib');
+
 
 const pool = new Pool({
   user: 'postgres',
@@ -35,34 +38,42 @@ app.get('/recovery', (req, res) => {
 app.post('/recover', async (req, res) => {
     const { email } = req.body;
 
+    const config_mail ={
+      host : 'smtp.gmail.com',
+      port : 587,
+      auth : {
+        user : 'araelhidalgojuarez@gmail.com',
+        pass : 'mvjs gzrk hmag mooa'
+      }
+    }
     try {
-        // Realiza la lógica para recuperar la contraseña del usuario
-        // y enviarla por correo electrónico.
+        const result = await pool.query("SELECT password FROM usuarios WHERE correo_recuperacion = $1", [email]);
 
-        // Aquí debes agregar la lógica para buscar la contraseña en la base de datos
-        // y enviarla por correo electrónico al usuario.
-        
-        // Luego, usa nodemailer para enviar el correo electrónico con la contraseña
-        const transporter = nodemailer.createTransport({
-            // Configuración del servicio de correo electrónico (por ejemplo, Gmail)
-            service: 'gmail',
-            auth: {
-                user: 'tu_correo@gmail.com',
-                pass: 'tu_contraseña'
+        if (result.rows.length === 0) {
+            return res.status(404).send('No user found with the provided email');
+        }
+
+        const password = result.rows[0].password;
+
+        async function enviarMail() {
+            const mensaje = {
+                from: 'araelhidalgojuarez@gmail.com',
+                to: email,
+                subject: 'Recuperación de Contraseña',
+                text: `Tu contraseña es: ${password}`
             }
-        });
 
-        const mailOptions = {
-            from: 'tu_correo@gmail.com',
-            to: email,
-            subject: 'Recuperación de Contraseña',
-            text: 'Tu contraseña es: [Contraseña]'
-        };
+            const transport = nodemailer.createTransport(config_mail);
 
-        await transporter.sendMail(mailOptions);
+            const info = await transport.sendMail(mensaje);
 
-        // Envía una respuesta al cliente indicando que se ha enviado el correo
-        res.send('Se ha enviado un correo con la contraseña.');
+            console.log('Message sent: %s', info.messageId);
+        }
+        await enviarMail();
+
+        // Enviando la respuesta tipo JSON
+        res.status(200).json({ success: true });
+
     } catch (error) {
         console.error(error);
         res.status(500).send('Error al enviar el correo.');
@@ -70,6 +81,7 @@ app.post('/recover', async (req, res) => {
 });
 app.post('/api/alumnos/add', async (req, res) => {
   const { email, password } = req.body;
+  const { nombre, apellidos, matricula, empresa, grado, grupo } = req.body;
 
    const correoInstitucionalRegex = /^[a-zA-Z0-9._%+-]+@unach\.mx$/;
 
@@ -98,6 +110,23 @@ app.post('/api/alumnos/add', async (req, res) => {
       res.status(500).send('Error interno del servidor');
     }
 });
+async function generatePDF(formData) {
+  const pdfBuffer = fs.readFileSync('formulario.pdf');
+  const pdfDoc = await PDFDocument.load(pdfBuffer);
+  const form = pdfDoc.getForm();
+
+  // Rellenando los campos
+  form.getTextField('Nombre').setText(`${formData.nombre} ${formData.apellidos}`);
+  form.getTextField('Matricula').setText(formData.matricula);
+  form.getTextField('EmpresaAsignada').setText(formData.empresa);
+  form.getTextField('Grado').setText(formData.grado);
+  form.getTextField('Grupo').setText(formData.grupo);
+
+  // Guarda el PDF modificado
+  const modifiedPdfBytes = await pdfDoc.save();
+
+  return modifiedPdfBytes;
+}
 
 app.get('/menu', (req, res) => {
   res.sendFile('./public/menu/menu.html', {
