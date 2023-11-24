@@ -13,6 +13,7 @@ body {
   padding-bottom: 20px;
 }
 .form {
+  color: #151717 ;
     font-size: 20px;
     display: flex;
     flex-direction: column;
