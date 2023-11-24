@@ -29,12 +29,12 @@ function previewImage() {
         reader.readAsDataURL(file);
     }
 }
-// Archivo menu.js
 
 function redirectToFormulario() {
-    // Redirige a la página del formulario (reemplaza 'formulario.html' con el nombre de tu archivo HTML)
+    // Redirige a la página del formulario
     window.location.href = 'formulario.html';
 }
+
 function redirectToDocumentacion(){
     window.location.href = 'documentacion.html';
 }

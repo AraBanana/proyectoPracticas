@@ -149,7 +149,13 @@ body {
   .volver {
     text-align: center;
     color: black;
-    font-size: 14px;
+    font-size: 13px;
+    margin: 5px 0;
+  }
+  .consultarCorreo {
+    text-align: center;
+    color: black;
+    font-size: 12px;
     margin: 5px 0;
   }
   
