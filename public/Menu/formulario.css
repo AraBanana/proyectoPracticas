@@ -39,7 +39,7 @@ label select:focus {
 
 .titulo_form{
     margin-top: -120px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     margin-left: -100px;
     padding-bottom: 5px;
     color: var(--color_Unach);
@@ -50,7 +50,20 @@ label select:focus {
     padding-right: 120px;
 
   }
+.titulo_form_lib{
 
+  margin-top: -120px;
+  margin-bottom: 30px;
+  margin-left: -100px;
+  padding-bottom: 5px;
+  color: var(--color_Unach);
+  border-bottom: 1px solid var(--color_Unach);
+  width: 100%; /* Ocupa todo el ancho disponible */
+  display: block; /* Asegura que sea un bloque y ocupe toda la línea */
+  padding-left: 120px;
+  padding-right: 120px;
+
+}
 .container-menu__informacion{
     margin-left: 17%;
     margin-top: 160px;
@@ -58,10 +71,16 @@ label select:focus {
 }
 .flex {
  
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
 }
+.flex_1{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
 
 label {
     display: block;
