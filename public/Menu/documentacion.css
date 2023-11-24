@@ -11,8 +11,8 @@
 }
 
 .titulo_documentation{
-    margin-top: -120px;
-    margin-bottom: 100px;
+    margin-top: -190px;
+    margin-bottom: 20px;
     margin-left: -100px;
     padding-bottom: 5px;
     color: var(--color_Unach);
@@ -24,10 +24,129 @@
 
   }
 
+.fancy {
+    margin-top: 0px;
+    margin-left: 85px;
+    margin-bottom: 25px;
+    font-size: 11px;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: var(--color_Unach);
+    text-transform: uppercase;
+    position: relative;
+    transition: .5s ease;
+    cursor: pointer;
+    border: 1px solid var(--color_Unach);
+  }
+  
+  .fancy::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color_Unach);
+    transition: .5s ease;
+    cursor: pointer;
+  }
+  
+  .fancy:hover {
+    color: white;
+    transition-delay: .5s;
+    cursor: pointer;
+  }
+  
+  .fancy:hover::before {
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .fancy::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: var(--color_Unach);
+    transition: .4s ease;
+    z-index: -1;
+    cursor: pointer;
+  }
+  
+  .fancy:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+    cursor: pointer;
+  }
+.form_center_style
+{
+    margin-left: 7%;
+    margin-top: 160px;
+    font-size: 20px;
+}
 .container-menu__informacion{
+    margin-left: 6.5%;
+    margin-top: 60px;
+    font-size: 30px;
+}
+.container_menu_form{
     margin-left: 17%;
     margin-top: 160px;
     font-size: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 85px;
+    font-size: 16px;
+    color: #555555;
+}
+
+.form-input {
+    margin-bottom: 20px;
+    margin-left: 85px;
+    padding: 15px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-checkbox {
+    margin-bottom: 30px;
+    margin-left: 85px;
+}
+
+.form-input:hover,
+.form-checkbox:hover {
+    background-color: #f0f8ff;
+}
+
+.form-input:focus,
+.form-checkbox:focus {
+    outline: none;
+    border: 2px solid #18386B;
+}
+
+.form-input::before,
+.form-checkbox::before {
+    display: block;
+    background-color: #18386B;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.form-input::before:hover,
+.form-checkbox::before:hover {
+    background-color: #3498db;
 }
 .flex {
  

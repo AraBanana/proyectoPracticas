@@ -4,66 +4,91 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<link rel="stylesheet" type="text/css" href="domNor.css">
+	<link rel="stylesheet" type="text/css" href="menu.css">
 	
 	<link rel="icon" href="ico.png" type="image/png">
 	<title>PracticasProfesionales</title>
 </head>
 <body>
 	<form class="form" action="/menu" method="post">
-	<header class="dom">
-		<div class="dom-nav">
-			<h1 class="dom-nav__h1">DOMA´S</h1>
-			<p class="dom-nav__p">Sistema de practicas profesionales</p>
-		</div>
-	</header>
-	<div class="container">
-	<div class="container-panel">
-		<div class="profile-container">
-			<div class="profile-picture">
-				<img src="default-avatar.jpg" alt="Profile Picture" id="profile-image">
-				<input type="file" id="file-input" accept="image/*" onchange="previewImage()">
+		<header class="dom">
+			<div class="dom-nav">
+				<h1 class="dom-nav__h1">DOMA´S</h1>
+				<p class="dom-nav__p">Sistema de prácticas profesionales</p>
+			</div>
+		</header>
+		<div class="container">
+			<div class="container-panel">
+				<div class="profile-container">
+					<div class="profile-picture">
+						<img src="default-avatar.jpg" alt="Profile Picture" id="profile-image">
+						<input type="file" id="file-input" accept="image/*" onchange="previewImage()">
+					</div>
+				</div>
+
+				<button type="button" class="formulario_button" onclick="redirectToFormulario()">
+					Formulario
+				</button>
+				
+				<button  type="button"  class="documentacion_button" onclick="redirectToDocumentacion()">
+					Documentación
+				</button>
+
+				<button type="button"   class="displacement_button"  onclick="redirectToInformacion()">
+					Información
+				</button>
+
+			</div>
+
+			<div class="container-menu">
+				<h1></h1>
+				<div class="container-menu__informacion">
+					<form class="container_menu_form">
+						
+						<div class="container_info_estilo">
+							<label class="titulo_informacion"><h3>Informacion</h3></label>
+							<h4>Bienvenido a nuestro Sistema de Prácticas Profesionales - DOMA'S</h4>
+							<br>
+							<br>
+							<br>
+
+							<label>Estimado usuario,</label><br>
+							<br>
+							<br>
+							<label>¡Gracias por elegir nuestro sistema para gestionar tus prácticas profesionales! Queremos facilitarte el proceso al máximo, y para ello, hemos diseñado una herramienta intuitiva y eficiente.</label><br><br>
+							<br>
+							<br>
+							<label>¿Cómo funciona?</label><br>
+							<br>
+							<p>1- Llena el formulario: Completa el formulario con los datos que te solicitamos. Queremos asegurarnos de que la información esté completa y precisa.</p>
+							<br>
+							<p>2- Genera tu PDF personalizado: Una vez que hayas llenado el formulario, simplemente haz clic en "Aceptar". Automáticamente, se generará un archivo PDF con el formato seleccionado y todos tus datos correctamente rellenados.</p>
+							<br>
+							<p>3- Sube tu documentación: Dirígete a la sección de "Documentación" y carga el PDF que acabas de generar. Esto nos permitirá revisar tu información y agilizar el proceso de verificación.</p>
+							<br>
+							<p>4- Verificación por parte del administrador: Nuestro equipo administrativo revisará tu documentación para asegurarse de que todo esté en orden. Te notificaremos una vez que tu documentación haya sido verificada con éxito.</p>
+							<br>
+							<p>¡Y listo! Queremos que este proceso sea lo más sencillo posible para ti. Si tienes alguna pregunta o necesitas asistencia, no dudes en ponerte en contacto con nosotros.</p><br>
+							<br>
+							<label>Gracias por confiar en DOMA'S.</label><br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<label>Atentamente, El Equipo de DOMA'S</label>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 
-		<button type="button" class="formulario_button" onclick="redirectToFormulario()">
-			Formulario
-		</button>
-		
-		<button  type="button"  class="documentacion_button" onclick="redirectToDocumentacion()">
-			Documentación
-	   </button>
-
-		<button class="displacement_button">
-			Informacion
-		</button>
-
-		<button class="acercade_button">
-			Acerda de
-		</button>
-
-
-
-	</div>
-
-	<div class="container-menu">
-		<h1></h1>
-		<div class="container-menu__informacion">
-			<form class="container_menu_form">
-
-				<h1>no me repruebe profe</h1>
-
-
-			</form>
+		<div class="pie">
+			<div class="pie-pagina">
+				<h5 class="pie-pagina__p">UNIVERSIDAD AUTONOMA DE CHIAPAS  2023© UNACH  |  Facultad de Negocios Campus IV  |  Carretera a Puerto Madero Km. 1.5, Col. San Sebastián, Tapachula, Chiapas  |  </h5>
+				<a class="pie-pagina__facebook" href="https://www.facebook.com/profile.php?id=100057134842799"></a>
+			</div>
 		</div>
-	</div>
-</div class="container">
-	<div class="pie">
-		<div class="pie-pagina">
-		<h5 class="pie-pagina__p">UNIVERSIDAD AUTONOMA DE CHIAPAS  2023© UNACH  |  Facultad de Negocios Campus IV  |  Carretera a Puerto Madero Km. 1.5, Col. San Sebastián, Tapachula, Chiapas  |  </h5>
-		<a class="pie-pagina__facebook" href="https://www.facebook.com/profile.php?id=100057134842799"></a>
-	</div>
-</div>
-</form>
-<script src="/menu/menu.js"></script>
+	</form>
+	<script src="/menu/menu.js"></script>
 </body>
 </html>

@@ -79,6 +79,97 @@ app.post('/recover', async (req, res) => {
         res.status(500).send('Error al enviar el correo.');
     }
 });
+
+app.post('/formularioLiberacion', async (req, res) => {
+ 
+  const { nombre, semestre, grupo, matricula, periodo, dia, mes, calificacion } = req.body;
+  try {
+    // Cargar el documento PDF existente
+    const existingPdfBytes = fs.readFileSync('/Users/araelhidalgojuarez/GIT/proyectoPracticas/cartaLiberacion2.pdf');
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+    // Obtener el formulario y el campo de texto
+    let form = pdfDoc.getForm();
+    let pdfNombre = form.getTextField('nombreAlumno');
+    let pdfSemestre = form.getTextField('semestre');
+    let pdfGrupo = form.getTextField('grupo');
+    let pdfMatricula = form.getTextField('matricula');
+    let pdfPeriodo = form.getTextField('periodo');
+    let pdfDia = form.getTextField('fecha');
+    let pdfMes = form.getTextField('mes');
+    let pdfCalificacion = form.getTextField('calificacion');
+
+    // Establecer el valor del campo de texto
+    pdfNombre.setText(nombre);
+    pdfSemestre.setText(semestre);
+    pdfGrupo.setText(grupo);
+    pdfMatricula.setText(matricula);
+    pdfPeriodo.setText(periodo);
+    pdfDia.setText(dia);
+    pdfMes.setText(mes);
+    pdfCalificacion.setText(calificacion);
+    
+  
+
+    // Serializar el PDFDocument a bytes (un Uint8Array)
+
+    const pdfBytes = await pdfDoc.save();
+
+    // Guardar el PDF modificado en un archivo
+    
+    fs.writeFileSync('/Users/araelhidalgojuarez/GIT/proyectoPracticas/cartaResultado.pdf', pdfBytes);
+
+    // Aquí continúa tu código existente...
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al procesar el formulario de presentacion');
+  }
+});
+app.post('/formularioPropuesta', async (req, res) => {
+ 
+  const { antecedentes, problematica, soluciones, alcances, integrantes, integrante } = req.body;
+  try {
+    // Cargar el documento PDF existente
+    const existingPdfBytes = fs.readFileSync('/Users/araelhidalgojuarez/GIT/proyectoPracticas/propuestaProyecto2.pdf');
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+    // Obtener el formulario y el campo de texto
+    let form = pdfDoc.getForm();
+    let pdfAntecedentes = form.getTextField('antecedentes');
+    let pdfProblematica = form.getTextField('problematica');
+    let pdfSoluciones = form.getTextField('soluciones');
+    let pdfAlcances = form.getTextField('alcances');
+    let pdfIntegrantes = form.getTextField('integrantes');
+    let pdfIntegrante = form.getTextField('integrante');
+    
+
+    // Establecer el valor del campo de texto
+    pdfAntecedentes.setText(antecedentes);
+    pdfProblematica.setText(problematica);
+    pdfSoluciones.setText(soluciones);
+    pdfAlcances.setText(alcances);
+    pdfIntegrantes.setText(integrantes);
+    pdfIntegrante.setText(integrante);
+    
+  
+
+    // Serializar el PDFDocument a bytes (un Uint8Array)
+
+    const pdfBytes = await pdfDoc.save();
+
+    // Guardar el PDF modificado en un archivo
+    
+    fs.writeFileSync('/Users/araelhidalgojuarez/GIT/proyectoPracticas/cartaResultadoPropuesta.pdf', pdfBytes);
+
+    // Aquí continúa tu código existente...
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al procesar el formulario de propuesta');
+  }
+});
+
+
+
 app.post('/api/alumnos/add', async (req, res) => {
   const { email, password } = req.body;
   const { nombre, apellidos, matricula, empresa, grado, grupo } = req.body;
@@ -110,23 +201,6 @@ app.post('/api/alumnos/add', async (req, res) => {
       res.status(500).send('Error interno del servidor');
     }
 });
-async function generatePDF(formData) {
-  const pdfBuffer = fs.readFileSync('formulario.pdf');
-  const pdfDoc = await PDFDocument.load(pdfBuffer);
-  const form = pdfDoc.getForm();
-
-  // Rellenando los campos
-  form.getTextField('Nombre').setText(`${formData.nombre} ${formData.apellidos}`);
-  form.getTextField('Matricula').setText(formData.matricula);
-  form.getTextField('EmpresaAsignada').setText(formData.empresa);
-  form.getTextField('Grado').setText(formData.grado);
-  form.getTextField('Grupo').setText(formData.grupo);
-
-  // Guarda el PDF modificado
-  const modifiedPdfBytes = await pdfDoc.save();
-
-  return modifiedPdfBytes;
-}
 
 app.get('/menu', (req, res) => {
   res.sendFile('./public/menu/menu.html', {

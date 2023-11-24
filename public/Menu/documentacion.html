@@ -32,12 +32,8 @@
 		<button  type="button"  class="documentacion_button" onclick="redirectToDocumentacion()">
 		 	Documentación
 		</button>
-		<button class="displacement_button">
+		<button type="button"   class="displacement_button"  onclick="redirectToInformacion()">
 			Informacion
-		</button>
-
-		<button class="acercade_button">
-			Acerda de
 		</button>
 
 
@@ -47,7 +43,16 @@
 	<div class="container-menu">
 		<div class="container-menu__informacion">
 			<form class="container_menu_form">
-                <label class="titulo_documentation"><h3>Documentacion</h3></label>
+				<label class="titulo_documentation"><h3>Documentación</h3></label>
+				<div class=" form_center_style">
+
+					<label for="pdfUpload" class="form-label">Subir documento PDF:</label>
+					<input type="file" id="pdfUpload" name="pdfUpload" accept="application/pdf" class="form-input">
+					<button type="submit" class="fancy">Enviar</button>
+					<label for="verified" class="form-label">La validacion se le hará llegar al correo institucional.</label>
+					
+				</div>
+		
 			</form>
 		</div>
 	</div>

@@ -9,7 +9,7 @@
 	<title>PracticasProfesionales</title>
 </head>
 <body>
-	<form class="form" action="/menu" method="post">
+
 	<header class="dom">
 		<div class="dom-nav">
 			<h1 class="dom-nav__h1">DOMA´S</h1>
@@ -32,31 +32,26 @@
             Documentación
        </button>
        
-		<button class="displacement_button">
+       <button type="button"   class="displacement_button"  onclick="redirectToInformacion()">
 			Informacion
 		</button>
 
-		<button class="acercade_button">
-			Acerda de
-		</button>
-
-    </form>
-
+	
 	</div>
 
 	<div class="container-menu">
 		
 		<div class="container-menu__informacion" id="formContainer">
-                <form class="container_menu_form" action="/formulario" method="post">
+             
                  
 
-                      <label class="titulo_form" ><h3>Formulario para documentacion de Practicas profesionales</h3></label>
+                      <label class="titulo" ><h3>Formulario para documentacion de Practicas profesionales</h3></label>
                       <label>
-                          <select name="tipo_carta" id="tipoCarta" onchange="updateForm()">
-                            <option value="carta_presentacion">Carta Presentación</option>
+                          <select name="tipo_carta" id="tipoCarta" onchange="handleTipoCartaChange()">
+                            <option value="carta_presentacion" >Carta Presentación</option>
                             <option value="carta_propuesta">Propuesta de proyecto</option>
                             <option value="carta_aceptacion">Carta Aceptación</option>
-                            <option value="carta_liberacion">Carta Liberacion</option>
+                            <option value="carta_liberacion" >Carta Liberacion</option>
                         </select>
                         
                         <span>Selecciona el tipo de Carta</span>
@@ -103,7 +98,7 @@
                         Volver a descargar
                     </button>
                
-                </form>
+            
                 
                 
 		</div>
@@ -116,156 +111,6 @@
 	</div>
 </div>
 </form>
-<!-- Add this script block at the end of your HTML, before the closing </body> tag -->
-<script>
-    function updateForm() {
-        var selectedTipoCarta = document.getElementById("tipoCarta").value;
-        var formContainer = document.getElementById("formContainer");
-
-        if (selectedTipoCarta === "carta_presentacion") {
-            // Customize the form for carta_presentacion (if needed)
-            formContainer.innerHTML = `
-            <form class="container_menu_form" action="/formulario" method="post">
-                  
-                  <label class="titulo_form" ><h3>Formulario para documentacion de Practicas profesionales</h3></label>
-                  <label>
-                      <select name="tipo_carta" id="tipoCarta" onchange="updateForm()">
-                          <option value="carta_presentacion">Carta Presentación</option>
-                          <option value="carta_propuesta">Propuesta de proyecto</option>
-                          <option value="carta_aceptacion">Carta Aceptación</option>
-                          <option value="carta_liberacion">Carta Liberacion</option>
-                      </select>
-                      
-                      <span>Selecciona el tipo de Carta</span>
-                  </label>
-                  
-                  <div class="flex">
-                      <label>
-                          <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre/s" required="">
-                          <span>Nombre</span>
-                      </label>
-              
-                      <label>
-                          <input class="input" type="text" name="apellidos" placeholder="Ingresa tus apellidos" required="">
-                          <span>Apellidos</span>
-                      </label>
-                  </div>  
-              
-                  <label>
-                      <input class="input" type="text" name="matricula" placeholder="Ingresa tu Matricula" required="">
-                      <span>Matricula</span>
-                  </label> 
-                      
-                  <label>
-                      <input class="input" type="text" name="empresa" placeholder="Ingresa el nombre de la empresa que tienes asignada" required="">
-                      <span>Empresa asignada</span>
-                  </label>
-              
-                  <div class="flex">
-                      <label>
-                          <input class="input" type="text" name="grado" placeholder="Ingresa tu grado" required="">
-                          <span>Grado</span>
-                      </label>
-              
-                      <label>
-                          <input class="input" type="text" name="grupo" placeholder="Ingresa tu grupo" required="">
-                          <span>Grupo</span>
-                      </label>
-                  </div>
-              
-                  <button type="submit" class="fancy">
-                      Aceptar
-                  </button>
-                  <button type="submit" class="fancy">
-                      Volver a descargar
-                  </button>
-              </form>
-              
-          
-            `;
-        } else if (selectedTipoCarta === "carta_propuesta") {
-            // Customize the form for carta_propuesta (if needed)
-            formContainer.innerHTML = ``;  // Clear previous modifications
-        } else if (selectedTipoCarta === "carta_aceptacion") {
-            // Customize the form for carta_aceptacion (if needed)
-            formContainer.innerHTML = ``;  // Clear previous modifications
-        } else if (selectedTipoCarta === "carta_liberacion") {
-            // Customize the form for carta_liberacion (if needed)
-            formContainer.innerHTML = `
-            <form class="container_menu_form" action="/formulario" method="post">
-                  
-                  <label class="titulo_form_lib" ><h3>Formulario para documentacion de Practicas profesionales</h3></label>
-                  <label>
-                      <select name="tipo_carta" id="tipoCarta" onchange="updateForm()">
-                          <option value="carta_liberacion">Carta Liberacion</option>
-                          <option value="carta_presentacion">Carta Presentación</option>
-                          <option value="carta_propuesta">Propuesta de proyecto</option>
-                          <option value="carta_aceptacion">Carta Aceptación</option>
-                          
-                      </select>
-                      
-                      <span>Selecciona el tipo de Carta</span>
-                  </label>
-                  
-                  <div class="flex">
-                      <label>
-                          <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre/s" required="">
-                          <span>Nombre completo</span>
-                      </label>
-                      
-                  </div>  
-              
-                  <div class="flex">
-                      <label>
-                          <input class="input" type="text" name="semestre" placeholder="Ingresa tu semestre" required="">
-                          <span>Semestre</span>
-                      </label>
-              
-                      <label>
-                          <input class="input" type="text" name="grupo" placeholder="Ingresa tu grupo" required="">
-                          <span>Grupo</span>
-                      </label>
-                  </div>
-                  <div class="flex">
-                  <label>
-                      <input class="input" type="text" name="matricula" placeholder="Ingresa tu Matricula" required="">
-                      <span>Matricula</span>
-                  </label> 
-                  <label>
-                      <input class="input" type="text" name="periodo" placeholder="Ingresa el periodo de tus practicas" required="">
-                      <span>Periodo</span>
-                  </label> 
-                </div>
-                <div class="flex_1">
-                  <label>
-                      <input class="input" type="text" name="dia" placeholder="Ingresa el dia actual" required="">
-                      <span>Fecha</span>
-                  </label> 
-                  <label>
-                      <input class="input" type="text" name="mes" placeholder="Ingresa el mes actual" required="">
-                    
-                  </label> 
-                  
-                </div>
-                
-                <div class="flex">
-                      <label>
-                          <input class="input" type="text" name="calificacion" placeholder="Ingresa tu calficacion" required="">
-                          <span>Calificacion</span>
-                      </label>
-                  </div>
-              
-                  <button type="submit" class="fancy">
-                      Aceptar
-                  </button>
-                  <button type="submit" class="fancy">
-                      Volver a descargar
-                  </button>
-              </form>
-            `;
-        }
-    }
-</script>
 
 <script src="/menu/menu.js"></script>
 </body>
