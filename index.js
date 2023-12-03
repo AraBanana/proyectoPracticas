@@ -20,7 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-let dbusuarios = [];
 
 app.get('/', (req, res) => {
   res.sendFile('./public/login/login.html', {
@@ -35,6 +34,8 @@ app.get('/recovery', (req, res) => {
     });
 });
 
+
+//Recuperar contraseña 
 app.post('/recover', async (req, res) => {
     const { email } = req.body;
 
@@ -55,6 +56,12 @@ app.post('/recover', async (req, res) => {
 
         const password = result.rows[0].password;
 
+        /**
+         * Envía un correo electrónico con la contraseña de recuperación.
+         * @async
+         * @function enviarMail
+         * @returns {Promise<void>} No devuelve ningún valor.
+         */
         async function enviarMail() {
             const mensaje = {
                 from: 'araelhidalgojuarez@gmail.com',
@@ -80,6 +87,9 @@ app.post('/recover', async (req, res) => {
     }
 });
 
+
+
+//FORMULARIO
 app.post('/formularioLiberacion', async (req, res) => {
  
   const { nombre, semestre, grupo, matricula, periodo, dia, mes, calificacion } = req.body;
@@ -108,10 +118,6 @@ app.post('/formularioLiberacion', async (req, res) => {
     pdfDia.setText(dia);
     pdfMes.setText(mes);
     pdfCalificacion.setText(calificacion);
-    
-  
-
-    // Serializar el PDFDocument a bytes (un Uint8Array)
 
     const pdfBytes = await pdfDoc.save();
 
@@ -125,6 +131,7 @@ app.post('/formularioLiberacion', async (req, res) => {
     res.status(500).send('Error al procesar el formulario de presentacion');
   }
 });
+
 app.post('/formularioPropuesta', async (req, res) => {
  
   const { antecedentes, problematica, soluciones, alcances, integrantes, integrante } = req.body;
@@ -168,38 +175,40 @@ app.post('/formularioPropuesta', async (req, res) => {
   }
 });
 
-
-
 app.post('/api/alumnos/add', async (req, res) => {
   const { email, password } = req.body;
   const { nombre, apellidos, matricula, empresa, grado, grupo } = req.body;
 
-   const correoInstitucionalRegex = /^[a-zA-Z0-9._%+-]+@unach\.mx$/;
+  const correoInstitucionalRegex = /^[a-zA-Z0-9._%+-]+@unach\.mx$/;
 
-   if (!correoInstitucionalRegex.test(email)) {
-     return res.status(400).send('Ingresa un correo institucional válido (@unach.mx)');
-   }
+  if (!correoInstitucionalRegex.test(email)) {
+    return res.status(400).send('Ingresa un correo institucional válido (@unach.mx)');
+  }
+
+  console.log('Datos recibidos del formulario:', { email, password });
+
+  try {
     console.log('Datos recibidos del formulario:', { email, password });
-    
-    try {
-      console.log('Datos recibidos del formulario:', { email, password });
-      const result = await pool.query("SELECT correo_institucional, password FROM usuarios WHERE correo_institucional = $1 AND password = $2", [email, password]);
-     
-      console.log('Resultado de la consulta:', result.rows);
-      
+    const query = {
+      text: 'SELECT correo_institucional, password FROM usuarios WHERE correo_institucional = $1 AND password = $2',
+      values: [email, password]
+    };
+    const result = await pool.query(query);
 
-      if (result.rows.length > 0) {
-        // Usuario válido
-        res.redirect('/menu');
-      } else {
-        // Usuario inválido
-        console.log('Credenciales incorrectas. No se encontraron coincidencias en la base de datos.');
-        res.status(401).send('Credenciales incorrectas');
-      }
-    } catch (error) {
-      console.error('Error al realizar la consulta:', error);
-      res.status(500).send('Error interno del servidor');
+    console.log('Resultado de la consulta:', result.rows);
+
+    if (result.rows.length > 0) {
+      // Usuario válido
+      res.redirect('/menu');
+    } else {
+      // Usuario inválido
+      console.log('Credenciales incorrectas. No se encontraron coincidencias en la base de datos.');
+      res.status(401).send('Credenciales incorrectas');
     }
+  } catch (error) {
+    console.error('Error al realizar la consulta:', error);
+    res.status(500).send('Error interno del servidor');
+  }
 });
 
 app.get('/menu', (req, res) => {
